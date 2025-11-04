@@ -60,7 +60,7 @@ for i in range(1, N_LAG + 1):
         week = int(row["week"])
         # 計算過去 i 週的累計加總
         lag_sum = 0
-        for n in range(1, i + 1):
+        for n in range(0, i + 1):
             prev_y, prev_w = get_prev_week(year, week, n)
             val = df_pm25_grouped[
                 (df_pm25_grouped["cluster"] == cluster) &

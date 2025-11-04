@@ -66,7 +66,7 @@ for region in regions:
         for x, y in zip(lag_cols, pearson_vals):
             plt.text(x, y, f"{y:.2f}", fontsize=8, ha='center', va='bottom')
     plt.axhline(0, color="black", linewidth=1)
-    plt.ylim(-1, 1)
+    plt.ylim(0, 1)
     plt.title(f"{region} 上呼吸道疾病 PM2.5 lag0~lag10 Pearson")
     plt.xlabel("Lag (週)")
     plt.ylabel("Pearson 相關係數")
@@ -95,7 +95,7 @@ for region in regions:
         for x, y in zip(lag_cols, pearson_vals):
             plt.text(x, y, f"{y:.2f}", fontsize=8, ha='center', va='bottom')
     plt.axhline(0, color="black", linewidth=1)
-    plt.ylim(-1, 1)
+    plt.ylim(0, 1)
     plt.title(f"{region} 下呼吸道疾病 PM2.5 lag0~lag10 Pearson")
     plt.xlabel("Lag (週)")
     plt.ylabel("Pearson 相關係數")

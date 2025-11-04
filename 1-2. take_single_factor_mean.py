@@ -54,19 +54,25 @@ N_LAG = 10
 df_pm25_grouped = df_pm25_grouped.rename(columns={"PM25": "PM25_lag0"})
 
 for i in range(1, N_LAG + 1):
-    lag_map = {}
+    lag_sum_map = {}
     for _, row in df_pm25_grouped.iterrows():
-        prev_y, prev_w = get_prev_week(int(row["year"]), int(row["week"]), i)
-        key = (row["cluster"], int(row["year"]), int(row["week"]))
-        lag_value = df_pm25_grouped[
-            (df_pm25_grouped["cluster"] == row["cluster"]) &
-            (df_pm25_grouped["year"] == prev_y) &
-            (df_pm25_grouped["week"] == prev_w)
-        ]["PM25_lag0"]
-        lag_map[key] = lag_value.values[0] if not lag_value.empty else None
+        cluster = row["cluster"]
+        year = int(row["year"])
+        week = int(row["week"])
+        # 計算過去 i 週的累計加總
+        lag_sum = 0
+        for n in range(0, i + 1):
+            prev_y, prev_w = get_prev_week(year, week, n)
+            val = df_pm25_grouped[
+                (df_pm25_grouped["cluster"] == cluster) &
+                (df_pm25_grouped["year"] == prev_y) &
+                (df_pm25_grouped["week"] == prev_w)
+            ]["PM25_lag0"]
+            lag_sum += val.values[0] if not val.empty else 0
+        lag_sum_map[(cluster, year, week)] = round(lag_sum / (i+1), 2)      # 把累計加總轉為累計平均
 
     df_pm25_grouped[f"PM25_lag{i}"] = df_pm25_grouped.apply(
-        lambda r: lag_map.get((r["cluster"], int(r["year"]), int(r["week"])), None),
+        lambda r: lag_sum_map.get((r["cluster"], int(r["year"]), int(r["week"])), None),
         axis=1
     )
 
@@ -115,6 +121,9 @@ for file in os.listdir(disease_folder):
     merged = merged[
         ["region", "year", "week", "case_c", "pop_total", "case_per_capita(‰)", *lag_cols]
     ]
+
+    # 移除 week == 53 的資料
+    merged = merged[merged["week"] != 53]
 
     # 排序與輸出
     merged = merged.sort_values(by=["region", "year", "week"])
