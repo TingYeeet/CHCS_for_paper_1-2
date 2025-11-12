@@ -5,7 +5,7 @@ from functools import reduce
 # === 1️⃣ 檔案路徑設定 ===
 disease_folder = "./0-1_周就醫轉比例_fill"
 exposure_folder = "./0-2_exposure_by_town"
-cluster_path = "./PM25_manual_cluster_2019.csv"
+cluster_path = "./PM25_cluster_2019.csv"
 output_folder = "./1-2_disease_with_PM25_lag0-10_mean"
 
 os.makedirs(output_folder, exist_ok=True)

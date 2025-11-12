@@ -1,0 +1,9 @@
+﻿疾病名稱,門檻類型,Cubic_R2,最佳門檻PM2.5,門檻下樣本數,門檻上樣本數,門檻下平均看診率,門檻上平均看診率,絕對變化,相對變化,Cohen_d,門檻點數量
+Allergic rhinitis_PM25_lag,Inflection/Extreme points,0.1482,27.90,838,202,5.0409,5.6173,0.5764,11.43%,0.7523,1
+Influenza_PM25_lag,Inflection/Extreme points,0.0896,40.20,1013,27,1.2945,2.0748,0.7803,60.28%,1.0764,2
+Pneumonia_PM25_lag,Inflection/Extreme points,0.0205,45.06,1031,9,1.3868,1.5467,0.1599,11.53%,0.4061,3
+URI_PM25_lag,Inflection/Extreme points,0.3187,28.17,843,197,32.4218,41.9599,9.5381,29.42%,1.2306,1
+急性Bronchitis_PM25_lag,Inflection/Extreme points,0.2587,21.42,671,369,7.4000,9.1719,1.7719,23.94%,0.9687,1
+急性Rhinosinusitis_PM25_lag,Inflection/Extreme points,0.1994,29.80,871,169,6.6437,7.9520,1.3083,19.69%,0.7457,1
+慢性Bronchitis_PM25_lag,Inflection/Extreme points,0.0635,32.71,925,115,1.6371,1.8588,0.2217,13.54%,0.6295,2
+氣喘_PM25_lag,Inflection/Extreme points,0.0768,31.87,913,127,1.7971,1.6426,-0.1545,-8.60%,-0.2856,1
